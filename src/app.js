@@ -2,6 +2,15 @@ var UI = require('ui');
 var Vector2 = require('vector2');
 var wind = new UI.Window();
 var ajax = require('ajax');
+var Accel = require('ui/accel');
+
+Accel.init();
+
+Accel.on('tap', function(e) {
+  refresh_sensors();
+  console.log('Tap event on axis: ' + e.axis + ' and direction: ' + e.direction);
+});
+
 
 
 // font: 'gothic-14-bold',
@@ -45,6 +54,7 @@ refresh_sensors();
 sens_data.borderColor('black'); time_data.borderColor('black'); date_data.borderColor('black');
 
 wind.add(sens_data); wind.add(time_data); wind.add(date_data);
+
 
 wind.show();
 
